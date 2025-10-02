@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Membership Form with Validation</title>
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+  <style>
+    body {
+      /* background-color: #000; */
+      background-image: url(Image/bf-header.jpg);
+      color: #fff;
+    }
+    .form-container {
+      max-width: 700px;
+      margin: 2rem auto;
+      background: #fff;
+      color: #000;
+      border-radius: .75rem;
+      padding: 2rem;
+      background-image: url(Image/bf-header.jpg);
+    }
+
+    /* .needs-validation {
+    color: #00070f;
+} */
+  </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg ">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active text-light" aria-current="page" href="index.html">Home</a>
+        <a class="nav-link text-light" href="about.html">About</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="form-container">
+  <h2 class="mb-3">Membership Application</h2>
+  <p>Please fill out the form below to become a fan member of Ben Fuller.</p>
+
+  <!-- Add the needs-validation class and novalidate -->
+  <form name="membership" method="post" data-netlify="true" class="needs-validation" novalidate id="membershipForm">
+
+    <div class="row g-3 mb-3">
+      <div class="col-md-6">
+        <label for="firstName" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="firstName" required>
+        <div class="invalid-feedback">Please enter your first name.</div>
+      </div>
+      <div class="col-md-6">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="lastName" required>
+        <div class="invalid-feedback">Please enter your last name.</div>
+      </div>
+    </div>
+
+    <div class="row g-3 mb-3">
+      <div class="col-md-6">
+        <label for="email" class="form-label"><h6>Email</h6></label>
+        <input type="email" class="form-control" id="email" required>
+        <div class="invalid-feedback">Please enter a valid email.</div>
+      </div>
+      <div class="col-md-6">
+        <label for="phone" class="form-label">Phone Number</label>
+        <input type="tel" class="form-control" id="phone" required>
+        <div class="invalid-feedback">Please enter your phone number.</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="membershipType" class="form-label">Membership Type</label>
+      <select class="form-select" id="membershipType" required>
+        <option value="" selected disabled>Select your membership type</option>
+        <option>Standard</option>
+        <option>Premium</option>
+        <option>VIP</option>
+      </select>
+      <div class="invalid-feedback">Please select a membership type.</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="address" class="form-label">Address</label>
+      <textarea class="form-control" id="address" rows="3" required></textarea>
+      <div class="invalid-feedback">Please enter your address.</div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label"><strong>How did you hear about us?</strong></label>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="internet">
+            <label class="form-check-label" for="internet">Internet search</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="event">
+            <label class="form-check-label" for="event">Attended an event</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="friend">
+            <label class="form-check-label" for="friend">Friend or colleague</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="other">
+            <label class="form-check-label" for="other">Other</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-check mb-4">
+      <input class="form-check-input" type="checkbox" id="terms" required>
+      <label class="form-check-label" for="terms">
+        I agree to the terms and conditions of the association.
+      </label>
+      <div class="invalid-feedback">You must agree before submitting.</div>
+    </div>
+
+    <button type="submit" class="btn btn-dark px-4 py-2 rounded-pill">
+      Submit Membership Application
+    </button>
+  </form>
+</div>
+
+<!-- Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center p-4">
+      <h4 class="mb-3 text-dark">Message Sent</h4>
+      <p class="text-dark">Your message has been sent successfully. We'll get back to you shortly.</p>
+      <button type="button" class="btn btn-dark mt-3" data-bs-dismiss="modal">OK</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Bootstrap custom validation
+(() => {
+  'use strict'
+  const form = document.getElementById('membershipForm');
+  form.addEventListener('submit', function (event) {
+    if (!form.checkValidity()) {
+      event.preventDefault();
+      event.stopPropagation();
+    } else {
+      event.preventDefault(); // stop actual submit for demo
+      // Show the success modal
+      const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+      successModal.show();
+      form.reset();
+      form.classList.remove('was-validated');
+      return;
+    }
+    form.classList.add('was-validated');
+  }, false);
+})();
+</script>
+
+</body>
+</html>
