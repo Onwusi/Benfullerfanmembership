@@ -2,7 +2,7 @@
     color:#278eee;
 }
 .background {
-background-image: url(Imagebf-header.jpg);
+background-image: url(/Image/bf-header.jpg);
 }
 .carousel-item img {
     object-fit: cover;
@@ -29,3 +29,4 @@ background-image: url(Imagebf-header.jpg);
     background-image: url(Image/bf-header.jpg);
 
 }
+
