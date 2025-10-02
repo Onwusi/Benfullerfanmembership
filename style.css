@@ -1,9 +1,9 @@
 .text-color{
     color:#278eee;
 }
-.background {
+/* .background {
 background-image: url(/Image/bf-header.jpg);
-}
+} */
 .carousel-item img {
     object-fit: cover;
     height: auto;
@@ -29,4 +29,5 @@ background-image: url(/Image/bf-header.jpg);
     background-image: url(Image/bf-header.jpg);
 
 }
+
 
