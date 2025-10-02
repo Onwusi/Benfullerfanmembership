@@ -12,7 +12,7 @@ background-image: url(/Image/bf-header.jpg);
     object-fit: cover;
 }
 .col-6 {
-    color: #ffffff;
+    color: white;
     box-shadow: 4px 4px 10px  rgba(0, 0, 0, 0.3) ;
 }
 
@@ -29,5 +29,6 @@ background-image: url(/Image/bf-header.jpg);
     background-image: url(Image/bf-header.jpg);
 
 }
+
 
 
